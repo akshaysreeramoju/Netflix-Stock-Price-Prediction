@@ -16,13 +16,10 @@ https://github.com/elizabethdaly/data-analysis-project.git
 2. [Description of the data set](#section2)
     1. [Initial steps](#sec2p1)
     2. [Descriptive statistics](#sec2p2)
-    3. [Start looking at categories of diner](#sec2p3)
-    4. [Plots to summarize some statistics](#sec2p4)
+    3. [Plots to summarize some statistics](#sec2p4)
 
 3. [Regression](#section3)
-    1. [Regression in Seaborn](#sec3p1)
-    2. [Simple linear regression using polyfit](#sec3p2)
-    3. [Regression with statsmodels](#sec3p3)
+    1. [Regression in Seaborn and Plotly](#sec3p1)
     4. [Regression with scikit-learn](#sec3p4)
     5. [Linear regression on various subsets of the data](#sec3p5)
     
@@ -87,44 +84,14 @@ In the notebook we first use Seaborn and plotly to visualize any linear relation
 
 ![SeabornFit](images/lmplotSmoke.png)
 
-### 3.2 Simple linear regression using polyfit <a name="sec3p2"></a>
-We perform a simple linear regression analysis of the data , **numpy.polyfit** can calculate the slope and intercept of the best fit line based on least squares fitting. It doesn't directly return a metric, so we must use **numpy.corrcoef** to evaluate the strength of the linear relationship between the total bill and tip amount. This function returns a matrix from which we can calculate the R<sup>2</sup> value as explained in the reference below about Pearson and Spearman Correlation in Python. The fitting parameters for our linear model are: 
-- slope = 0.105
-- intercept = 0.920
-- R<sup>2</sup> = 0.457
-
-So, a linear relationship does exist between the total bill and the tip amount, but in my opinion, it's not a very strong one. When dealing with scientific data in the past, I would be looking for much higher R<sup>2</sup> values. I'll discuss that more below. The best slope here corresponds to approximately a 10% tip, and note that the intercept is not zero; suggesting that the minimum tip is about $1. One can see lines of data points representing tip of $1, $2 and $3. This suggests that lots of diners round their tips to the nearest $. 
-
-![SimpleLinReg](images/LSQalldata.png)
-
-### 3.3 Regression with statsmodels <a name="sec3p3"></a>
-We then move on to using two packages, statsmodels and scikit-learn, to perform linear regression and return fitting parameters and metrics. statsmodels is a Python package for performing statistical analysis of data - we are interested in the OLS (Ordinary Least Squares) module for performing linear regression. OLS involves fitting a linear model with coefficients to minimize the residual sum of squares between the observed data points and the best fit: for each data point, square the difference between it and the best fit, and sum all of these residuals. We modify the model slightly to include a y intercept. The model returns a report containing statistical information, but for this project we are only interested in the slope, intercept, and value of R<sup>2</sup>.
 
 ### 3.4 Regression with scikit-learn <a name="sec3p4"></a>
 Scikit-learn is a machine learning package which can also perform OLS fitting. Strictly speaking there is no need to perform regression with both packages, but I do it once in the notebook and then stick to scikit-learn.  This package is useful for making predictions using the data set, something we may get on to later. We use the scikit-learn LinearRegression model which performs OLS fitting.
 
-In regression, R<sup>2</sup> is the coefficient of determination, a measure of how close the data points are to the fitted regression line; or how much of the variation in the data is explained by the linear model. It ranges from 0 to 1, and in general, higher values of R<sup>2</sup> are better. However, as the minitab reference below discusses, that's not the full story. That reference states that in fields which try to predict human behaviour (the tips data set falls into this category), values of R<sup>2</sup> less that 0.5 are not unusual; we find R<sup>2</sup> = 0.457 on average. It's also important to take into account the appropriateness of the model when assessing R<sup>2</sup>. Another model (perhaps a high-order polynomial fit) may produce a better value of R<sup>2</sup> but wouldn't be a sensible way to model how tip amount varies with total bill. 
+In regression, R<sup>2</sup> is the coefficient of determination, a measure of how close the data points are to the fitted regression line; or how much of the variation in the data is explained by the linear model. It ranges from 0 to 1, and in general, higher values of R<sup>2</sup> are better., values of R<sup>2</sup> less that 0.5 are not unusual; we find R<sup>2</sup> = 0.457 on average. It's also important to take into account the appropriateness of the model when assessing R<sup>2</sup>.. 
 
-To conclude this part of the analysis: the tip does depend linearly on the total bill in this data set. The slope of the best fit line is 0.105, the y intercept is 0.920, and R<sup>2</sup> is 0.457.
+To conclude this part of the analysis: the Close does depend linearly on the Open in this data set. The slope of the best fit line is 0.994, the y intercept is 2.24, and R<sup>2</sup> is 0.993.
 
-### 3.5 Linear regression on various subsets of the data <a name="sec3p5"></a>
-The results of regression on all of the data, and on subsets of it, are presented in the table below.
-
-Line fit    | R<sup>2</sup> | slope | intercept
-------------|---------------|-------|----------
-All           | 0.457     | 0.105 | 0.920     |
-size = 2      | 0.232     | 0.078 | 1.292     |
-size = 2,3,4  | 0.438     | 0.105 | 0.920     |
-F smokers     | 0.266     | 0.068 | 1.701     |
-M smokers     | 0.232     | 0.073 | 1.425     |
-F non-smokers | 0.686     | 0.128 | 0.452     |
-M non-smokers | 0.670     | 0.140 | 0.348     |
-day = Thur    | 0.660     | 0.128 | 0.512     |
-day = Fri     | 0.597     | 0.095 | 1.109     |
-day = Sat     | 0.495     | 0.121 | 0.519     |
-day = Sun     | 0.251     | 0.070 | 1.753     |
-
-What can we conclude from this? If higher R<sup>2</sup> indicates better a fit, then the data is fitted well by a linear model for non-smokers (regardless of sex) and for day = Thursday; these subsets result in the largest R<sup>2</sup> values and also high slopes. Maybe considering data from non-smokers on Thursday would produce the most reliable predictions of tip given total bill?
 
 **Tip predictions:**
 
