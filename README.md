@@ -1,14 +1,9 @@
 # Netflix-Stock-Price-Prediction
-# The Netflix Data Set 
 ## Akshay Sreeramoju
 
-Git-hub repository at:
-https://github.com/elizabethdaly/data-analysis-project.git
-
 - Jupyter notebook: **Stocks.ipynb**
-- data set: data\tips.csv
 
-![Tips](images/)
+![](images/)
 
 # Table of contents
 1. [Introduction](#introduction)
