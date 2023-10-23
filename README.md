@@ -3,7 +3,7 @@
 
 - Jupyter notebook: **Stocks.ipynb**
 
-![Stocks](Images/)
+![Stocks](Images/Stocks.jpg)
 
 # Table of contents
 1. [Introduction](#introduction)
