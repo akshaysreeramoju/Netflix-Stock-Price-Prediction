@@ -3,7 +3,7 @@
 
 - Jupyter notebook: **Stocks.ipynb**
 
-![](images/)
+![Stocks](Images/)
 
 # Table of contents
 1. [Introduction](#introduction)
@@ -11,7 +11,7 @@
 2. [Description of the data set](#section2)
     1. [Initial steps](#sec2p1)
     2. [Descriptive statistics](#sec2p2)
-    3. [Plots to summarize some statistics](#sec2p4)
+    3. [Corelation](#sec2p4)
 
 3. [Regression](#section3)
     1. [Regression in Seaborn and Plotly](#sec3p1)
@@ -20,9 +20,8 @@
     
 4. [Relationships between variables](#section4)
     1. [Visualize relationships between numerical variables with pairplot](#sec4p1)
-    2. [Investigate relationships between tip amount and the other variables](#sec4p2)
-    3. [Does the amount spent depend on party size?](#sec4p3)
-    4. [Classification](#sec4p4)
+    3. [Regression Algorithm](#sec4p3)
+    4. [LSTM](#sec4p4)
     
 5. [Work done by other people on the Tips data set](#section5)
     
@@ -49,19 +48,17 @@ Adjusted Close: The adjusted closing stock price of Netflix on that particular d
 ### 2.1 Initial steps <a name="sec2p1"></a>
 The very first step is always to check if the data needs cleaning by looking for duplicate rows, zero values or NaNs where they shouldn't be, etc. Our data set is small enough to inspect visually and it looks fine. Counting the number of valid entries in each column confirms this. The head of the data set looks like:
 
-![head](images/head.JPG)
+![head](Images/head.png)
 
 ### 2.2 Descriptive statistics <a name="sec2p2"></a>
 Pandas **describe()** can provide a quick summary of the data set as outlined in the notebook. However, without looking at the data in more detail, we cannot yet state what we think a typical Stock price is. **describe()** provides the mean,meadian,variance ,count etc... The output of pandas **describe(include="all")** is shown below. Here, all columns of the DataFrame are included in the analysis.
 
-![describeAll](images/describeAll.JPG)
+![describeAll](Images/desc.png)
 
-### 2.4 Plots to summarize some statistics <a name="sec2p4"></a>
-The following plots summarize this information graphically. So far it looks like the best time to be waiter in this restaurant is at lunch on Fridays if one is interested in the highest fractional tip. The best type of diner to serve is a female smoker. At this point of the analysis, I am not yet sure how the day and time variables are related to sex and smoker ones.
+### 2.4 Co-relation <a name="sec2p4"></a>
+Correlation is a way to determine if two features in a dataset are related in any way.Correlation is one of the most important statistical terms used in data science. It is used to measure the intensity of relationships between variables.**corr()** When the value is close to 1, it means that there is a strong positive correlation, and when the value is close to -1, it means that there is a strong negative correlation. And when the values are close to 0, it means that there is no correlation
 
-![barSmokerSex](images/barSmokerSex.png)
-
-![barDayTime](images/barDayTime.png)
+![barDayTime](Images/corr.png)
 
 ##  3. Regression <a name="section3"></a>
 For this part of the assessment, we have been asked to analyse if there is a relationship between the total bill and the tip amount. The simplest relationship would be a linear one. That's reasonable when we consider that tips (especially in the US) are usually a fixed percentage of the total bill. A linear model looks like:
@@ -77,7 +74,7 @@ where
 ### 3.1 Regression in Seaborn and Plotly<a name="sec3p1"></a>
 In the notebook we first use Seaborn and plotly to visualize any linear relationship between our two variables of interest using **regplot** . This does not give us any fitting parameters such as the slope and intercept of the linear fit, or any metrics to assess the quality of the fit, but it's a good start. Here we plot the best straight lines through Open and Close, as found by Seaborn.
 
-![SeabornFit](images/lmplotSmoke.png)
+![SeabornFit](Images/plotly.png)
 
 
 ### 3.4 Regression with scikit-learn <a name="sec3p4"></a>
@@ -96,19 +93,19 @@ We can use our linear regression parameters and LSTM(Long Short Term Memory) to 
 ### 4.1 Visualize relationships between numerical variables with pairplot <a name="sec4p1"></a>
 The Seaborn **pairplot** function plots pairwise relationships in a data set. It generates a grid of scatterplots of each numeric variable plotted against all the others, and a histogram of values when a variable is plotted against itself. The *hue* keyword can be used to differentiate between the different categorical variables on each subplotA variable could be used to separate categories if the histograms for different categories do not overlap too much. We don't see much evidence for that in the pairplot - unlike say in the iris data set - so I'll take it no further. Below is a Seaborn pairplot for this data set.
 
-![Pairplot](images/Pairplot.png)
+![Pairplot](Images/pair.png)
 
 
-### 4.4 Regression Algorithm <a name="sec4p4"></a>
+### 4.4 Regression Algorithm <a name="sec4p3"></a>
 Linear Regression Algorithm is a statistical technique for calculating the value of a dependent variable based on the value of an independent variable. The goal of linear regression is to find the best-fit line that describes the relationship between the dependent and the independent variable.It finds the best-fit line that describes the relationship between the input variable and the output variable so we can predict the output variable based on a new input variable.
 #### Implementation of Linear Regression Algorithm
-![Pairplot](images/Pairplot.png)
+![Pairplot](Images/Iplement.png)
 
-### Long Short Term Memory(LSTM) 
+### Long Short Term Memory(LSTM)  <a name="sec4p4"></a>
 LSTM model was generally designed to prevent the problems of long term dependencies which they generally do in a very good manner.The LSTM Network models generally have potential to remove or add data carefully which is regulated by a special structure known as gates. 
 
 #### Stock Price Prediction using LSTM
-![Pairplot](images/Pairplot.png)
+![Pairplot](Images/LSTM.png)
 
 ## 6. Conclusion <a name="conclusion"></a>
 we undertook a comprehensive analysis of Netflix stock price prediction. Our primary objectives were to develop and assess machine learning models for predicting Netflix's stock prices and to gain insights into the factors driving its price movements.our Netflix stock price prediction project provides valuable insights into the stock's price movements and offers a foundation for developing more accurate and effective prediction models. 
