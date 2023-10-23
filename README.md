@@ -15,19 +15,16 @@
 
 3. [Regression](#section3)
     1. [Regression in Seaborn and Plotly](#sec3p1)
-    4. [Regression with scikit-learn](#sec3p4)
-    5. [Linear regression on various subsets of the data](#sec3p5)
-    
+    2. [Regression with scikit-learn](#sec3p4)
+
 4. [Relationships between variables](#section4)
     1. [Visualize relationships between numerical variables with pairplot](#sec4p1)
-    3. [Regression Algorithm](#sec4p3)
-    4. [LSTM](#sec4p4)
-    
-5. [Work done by other people on the Tips data set](#section5)
-    
-6. [Conclusion](#conclusion)
+    2. [Regression Algorithm](#sec4p3)
+    3. [LSTM](#sec4p4)
+        
+5. [Conclusion](#conclusion)
 
-9. [References](#references)
+6. [References](#references)
 
 ## 1. Introduction <a name="introduction"></a>
 - This README describes work done on the  data set for the Fundamentals of Data Analysis include Python and associated packages Jupyter, matplotlib, Seaborn, scikit-learn, statsmodels, and SciPy.
@@ -55,7 +52,7 @@ Pandas **describe()** can provide a quick summary of the data set as outlined in
 
 ![describeAll](Images/desc.png)
 
-### 2.4 Co-relation <a name="sec2p4"></a>
+### 2.3 Co-relation <a name="sec2p4"></a>
 Correlation is a way to determine if two features in a dataset are related in any way.Correlation is one of the most important statistical terms used in data science. It is used to measure the intensity of relationships between variables.**corr()** When the value is close to 1, it means that there is a strong positive correlation, and when the value is close to -1, it means that there is a strong negative correlation. And when the values are close to 0, it means that there is no correlation
 
 ![barDayTime](Images/corr.png)
@@ -77,7 +74,7 @@ In the notebook we first use Seaborn and plotly to visualize any linear relation
 ![SeabornFit](Images/plotly.png)
 
 
-### 3.4 Regression with scikit-learn <a name="sec3p4"></a>
+### 3.2 Regression with scikit-learn <a name="sec3p4"></a>
 Scikit-learn is a machine learning package which can also perform OLS fitting. Strictly speaking there is no need to perform regression with both packages, but I do it once in the notebook and then stick to scikit-learn.  This package is useful for making predictions using the data set, something we may get on to later. We use the scikit-learn LinearRegression model which performs OLS fitting.
 
 In regression, R<sup>2</sup> is the coefficient of determination, a measure of how close the data points are to the fitted regression line; or how much of the variation in the data is explained by the linear model. It ranges from 0 to 1, and in general, higher values of R<sup>2</sup> are better., values of R<sup>2</sup> less that 0.5 are not unusual; we find R<sup>2</sup> = 0.457 on average. It's also important to take into account the appropriateness of the model when assessing R<sup>2</sup>.. 
@@ -85,7 +82,7 @@ In regression, R<sup>2</sup> is the coefficient of determination, a measure of h
 To conclude this part of the analysis: the Close does depend linearly on the Open in this data set. The slope of the best fit line is 0.994, the y intercept is 2.24, and R<sup>2</sup> is 0.993.
 
 
-**Tip predictions:**
+**Stock price predictions:** <a name="section4"></a>
 
 We can use our linear regression parameters and LSTM(Long Short Term Memory) to predict.
   
@@ -96,12 +93,12 @@ The Seaborn **pairplot** function plots pairwise relationships in a data set. It
 ![Pairplot](Images/pair.png)
 
 
-### 4.4 Regression Algorithm <a name="sec4p3"></a>
+### 4.2 Regression Algorithm <a name="sec4p3"></a>
 Linear Regression Algorithm is a statistical technique for calculating the value of a dependent variable based on the value of an independent variable. The goal of linear regression is to find the best-fit line that describes the relationship between the dependent and the independent variable.It finds the best-fit line that describes the relationship between the input variable and the output variable so we can predict the output variable based on a new input variable.
 #### Implementation of Linear Regression Algorithm
 ![Pairplot](Images/Iplement.png)
 
-### Long Short Term Memory(LSTM)  <a name="sec4p4"></a>
+### 4.3 Long Short Term Memory(LSTM)  <a name="sec4p4"></a>
 LSTM model was generally designed to prevent the problems of long term dependencies which they generally do in a very good manner.The LSTM Network models generally have potential to remove or add data carefully which is regulated by a special structure known as gates. 
 
 #### Stock Price Prediction using LSTM
